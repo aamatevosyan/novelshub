@@ -1,0 +1,32 @@
+[
+    {
+        "name": "English",
+        "code": "en",
+        "locale": "en_US",
+        "rtl": false
+    },
+    {
+        "name": "Russian",
+        "code": "ru",
+        "locale": "ru_RU",
+        "rtl": false
+    },
+    {
+        "name": "Korean",
+        "code": "kr",
+        "locale": "ko_KR",
+        "rtl": false
+    },
+    {
+        "name": "Japanese",
+        "code": "jp",
+        "locale": "ja_JP",
+        "rtl": false
+    },
+    {
+        "name": "Chinese",
+        "code": "cn",
+        "locale": "zh_CN",
+        "rtl": false
+    }
+]
