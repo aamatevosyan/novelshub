@@ -23,5 +23,9 @@ class DatabaseSeeder extends Seeder
 
         $this->call(GenreNovelSeeder::class);
         $this->call(NovelTagSeeder::class);
+
+        $this->call(SourceSeeder::class);
+        $this->call(LanguageSourceSeeder::class);
+        $this->call(NovelSourceSeeder::class);
     }
 }

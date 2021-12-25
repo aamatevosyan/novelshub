@@ -14,6 +14,7 @@ namespace App\Models{
 /**
  * App\Models\Author
  *
+ * @mixin IdeHelperAuthor
  * @property int $id
  * @property array $name
  * @property \Illuminate\Support\Carbon|null $created_at
@@ -26,7 +27,6 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Author whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Author whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Author whereUpdatedAt($value)
- * @mixin \Eloquent
  */
 	class IdeHelperAuthor extends \Eloquent {}
 }
@@ -35,6 +35,7 @@ namespace App\Models{
 /**
  * App\Models\Genre
  *
+ * @mixin IdeHelperGenre
  * @property int $id
  * @property array $name
  * @property \Illuminate\Support\Carbon|null $created_at
@@ -49,7 +50,6 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Genre whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Genre whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Genre whereUpdatedAt($value)
- * @mixin \Eloquent
  */
 	class IdeHelperGenre extends \Eloquent {}
 }
@@ -58,6 +58,7 @@ namespace App\Models{
 /**
  * App\Models\GenreNovel
  *
+ * @mixin IdeHelperGenreNovel
  * @property int $id
  * @property int $genre_id
  * @property int $novel_id
@@ -71,7 +72,6 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|GenreNovel whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|GenreNovel whereNovelId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|GenreNovel whereUpdatedAt($value)
- * @mixin \Eloquent
  */
 	class IdeHelperGenreNovel extends \Eloquent {}
 }
@@ -80,6 +80,7 @@ namespace App\Models{
 /**
  * App\Models\Language
  *
+ * @mixin IdeHelperLanguage
  * @property int $id
  * @property string $name
  * @property string $code
@@ -87,6 +88,8 @@ namespace App\Models{
  * @property bool $rtl
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Source[] $sources
+ * @property-read int|null $sources_count
  * @method static \Illuminate\Database\Eloquent\Builder|Language newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Language newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Language query()
@@ -97,15 +100,37 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Language whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Language whereRtl($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Language whereUpdatedAt($value)
- * @mixin \Eloquent
  */
 	class IdeHelperLanguage extends \Eloquent {}
 }
 
 namespace App\Models{
 /**
+ * App\Models\LanguageSource
+ *
+ * @property int $id
+ * @property int $language_id
+ * @property int $source_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|LanguageSource newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|LanguageSource newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|LanguageSource query()
+ * @method static \Illuminate\Database\Eloquent\Builder|LanguageSource whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|LanguageSource whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|LanguageSource whereLanguageId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|LanguageSource whereSourceId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|LanguageSource whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
+	class IdeHelperLanguageSource extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\Novel
  *
+ * @mixin IdeHelperNovel
  * @property int $id
  * @property string $original_name
  * @property array $name
@@ -122,6 +147,8 @@ namespace App\Models{
  * @property-read int|null $genres_count
  * @property-read array $translations
  * @property-read \App\Models\Language|null $language
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Source[] $sources
+ * @property-read int|null $sources_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Tag[] $tags
  * @property-read int|null $tags_count
  * @property-read \App\Models\NovelType|null $type
@@ -139,15 +166,39 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Novel whereRating($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Novel whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Novel whereViewCount($value)
- * @mixin \Eloquent
  */
 	class IdeHelperNovel extends \Eloquent {}
 }
 
 namespace App\Models{
 /**
+ * App\Models\NovelSource
+ *
+ * @property int $id
+ * @property int $novel_id
+ * @property int $source_id
+ * @property array $data
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|NovelSource newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|NovelSource newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|NovelSource query()
+ * @method static \Illuminate\Database\Eloquent\Builder|NovelSource whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|NovelSource whereData($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|NovelSource whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|NovelSource whereNovelId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|NovelSource whereSourceId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|NovelSource whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
+	class IdeHelperNovelSource extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\NovelTag
  *
+ * @mixin IdeHelperNovelTag
  * @property int $id
  * @property int $novel_id
  * @property int $tag_id
@@ -161,7 +212,6 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|NovelTag whereNovelId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|NovelTag whereTagId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|NovelTag whereUpdatedAt($value)
- * @mixin \Eloquent
  */
 	class IdeHelperNovelTag extends \Eloquent {}
 }
@@ -170,6 +220,7 @@ namespace App\Models{
 /**
  * App\Models\NovelType
  *
+ * @mixin IdeHelperNovelType
  * @property int $id
  * @property array $name
  * @property \Illuminate\Support\Carbon|null $created_at
@@ -182,15 +233,41 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|NovelType whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|NovelType whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|NovelType whereUpdatedAt($value)
- * @mixin \Eloquent
  */
 	class IdeHelperNovelType extends \Eloquent {}
 }
 
 namespace App\Models{
 /**
+ * App\Models\Source
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $url
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Language[] $languages
+ * @property-read int|null $languages_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Novel[] $novels
+ * @property-read int|null $novels_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Source newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Source newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Source query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Source whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Source whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Source whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Source whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Source whereUrl($value)
+ * @mixin \Eloquent
+ */
+	class IdeHelperSource extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\Tag
  *
+ * @mixin IdeHelperTag
  * @property int $id
  * @property array $name
  * @property \Illuminate\Support\Carbon|null $created_at
@@ -205,7 +282,6 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Tag whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Tag whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Tag whereUpdatedAt($value)
- * @mixin \Eloquent
  */
 	class IdeHelperTag extends \Eloquent {}
 }
@@ -214,6 +290,7 @@ namespace App\Models{
 /**
  * App\Models\User
  *
+ * @mixin IdeHelperUser
  * @property int $id
  * @property string $name
  * @property string $email
@@ -254,7 +331,6 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|User whereTwoFactorRecoveryCodes($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereTwoFactorSecret($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
- * @mixin \Eloquent
  */
 	class IdeHelperUser extends \Eloquent {}
 }

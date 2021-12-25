@@ -59,4 +59,9 @@ class Novel extends Model
     {
         return $this->belongsToMany(Tag::class);
     }
+
+    public function sources(): BelongsToMany
+    {
+        return $this->belongsToMany(Source::class)->withPivot('data');
+    }
 }
