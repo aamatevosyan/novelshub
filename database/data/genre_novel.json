@@ -1,0 +1,10 @@
+[
+    {
+        "genre_id": 1,
+        "novel_id": 1
+    },
+    {
+        "genre_id": 2,
+        "novel_id": 1
+    }
+]

@@ -14,5 +14,14 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call(LanguageSeeder::class);
+        $this->call(GenreSeeder::class);
+        $this->call(TagSeeder::class);
+        $this->call(NovelTypeSeeder::class);
+        $this->call(AuthorSeeder::class);
+
+        $this->call(NovelSeeder::class);
+
+        $this->call(GenreNovelSeeder::class);
+        $this->call(NovelTagSeeder::class);
     }
 }

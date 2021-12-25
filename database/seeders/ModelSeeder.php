@@ -6,7 +6,6 @@ use Arr;
 use DB;
 use Illuminate\Database\Eloquent\Model;
 use JetBrains\PhpStorm\Pure;
-use JsonException;
 
 abstract class ModelSeeder extends BaseSeeder
 {
@@ -34,7 +33,7 @@ abstract class ModelSeeder extends BaseSeeder
     }
 
     /**
-     * @throws JsonException
+     * @return array
      */
     public function getData(): array
     {
@@ -46,7 +45,10 @@ abstract class ModelSeeder extends BaseSeeder
     /**
      * @return array
      */
-    abstract public function getDistinctKeys(): array;
+    public function getDistinctKeys(): array
+    {
+        return ['id'];
+    }
 
     /**
      * @param  array  $data
@@ -75,7 +77,6 @@ abstract class ModelSeeder extends BaseSeeder
             $this->getDistinctData($data, $keys),
             $data
         );
-
     }
 
     /**

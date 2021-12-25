@@ -10,9 +10,4 @@ class LanguageSeeder extends ModelSeeder
     {
         return Language::class;
     }
-
-    public function getDistinctKeys(): array
-    {
-        return ['code'];
-    }
 }

@@ -1,29 +1,34 @@
 [
     {
+        "id": 1,
         "name": "English",
         "code": "en",
         "locale": "en_US",
         "rtl": false
     },
     {
+        "id": 2,
         "name": "Russian",
         "code": "ru",
         "locale": "ru_RU",
         "rtl": false
     },
     {
+        "id": 3,
         "name": "Korean",
         "code": "kr",
         "locale": "ko_KR",
         "rtl": false
     },
     {
+        "id": 4,
         "name": "Japanese",
         "code": "jp",
         "locale": "ja_JP",
         "rtl": false
     },
     {
+        "id": 5,
         "name": "Chinese",
         "code": "cn",
         "locale": "zh_CN",
